@@ -1,0 +1,27 @@
+ @font-face{
+    font-family: juice;
+    src:url('../font/juice.ttf');
+}
+
+.mid{
+	padding:20px;
+	box-shadow: 3px 2px 3px 5px gray;
+	border-radius:10px;
+
+}
+.fli{
+border:1px solid transparent;
+transition:2s;
+}
+
+.fli:hover{
+	background-color:transparent;
+	color:#275d71;
+	text-decoration:none;
+	transition:2s;
+	
+}
+
+.fonti{
+	font-family:juice;
+}

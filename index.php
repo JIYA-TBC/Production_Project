@@ -125,7 +125,7 @@ include "connect.php";
 	</section>
 
 
-	<!-- Banner -->
+	<!-- Banner --> 
 	<div class="sec-banner bg0 p-t-80 p-b-50">
 		<div class="container">
 			<div class="row">
@@ -157,7 +157,7 @@ include "connect.php";
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-02.jpg" alt="IMG-BANNER">
+						<img src="images/index-back.jpg" alt="IMG-BANNER">
 
 						<a href="contact.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
@@ -182,7 +182,7 @@ include "connect.php";
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
+						<img src="images/index-back.jpg" alt="IMG-BANNER">
 
 						<a href="login.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
@@ -211,8 +211,8 @@ include "connect.php";
 	<div class="sec-banner bg0 p-t-80 p-b-50">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 more">
-					<h3>
+				<div class="col-md-6 more" >
+					<h3 style="color:#f23d7f;">
 					Experience and innovation drive our vision for Post-Partum care.
 					</h3>
 					<p>
@@ -224,75 +224,104 @@ include "connect.php";
 				</div>
 
 				<div class="col-md-6 more">
-				<center><img src="images/logo2.jpg" alt="IMG-BANNER"></center>
+				<center><img src="images/home1.png" alt="IMG-BANNER" style="height:550px; width:650px;"></center>
 
 				</div>
 			</div>
 		</div>
 	</div>
 
+<!-- Services -->
+<section class="bg0 p-t-23 p-b-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="p-b-10">
+                    <h3 class="ltext-103 cl5" style="color:#f23d7f;">
+                        What Can Post-Partum Offer You?
+                        <hr style="width:10%; border-bottom: 2px solid #000;">
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+		<div class="col-md-3">
+                <!-- Block2 -->
+                <div class="block2 h-70">
+                    <div class="block2-pic hov-img0">
+                        <center><img src="images/healthcare1.jpg" alt="IMG-PRODUCT" style="height: 100%; width: 100%" ></center>
+                        <a href="login.php" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            View &nbsp;<span class="fa fa-user"></span>
+                        </a>
+                    </div>
 
-	<!-- Services -->
-	<section class="bg0 p-t-23 p-b-140">
-		<div class="container">
-			<div class="p-b-10">
-				<h3 class="ltext-103 cl5" style="color:#f63;">
-					Some of our Medical Services
-					<hr style="width:10%; border-bottom: 2px solid #000;">
-				</h3>
-			</div><br>
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1">
+                            <span class="stext-105 cl3">Healthcare Professionals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			
-			<div class="row isotope-grid">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<center><img src="images/product-01.png" alt="IMG-PRODUCT"></center>
+            <div class="col-md-3">
+                <!-- Block2 -->
+                <div class="block2 h-70">
+                    <div class="block2-pic hov-img0">
+                        <center><img src="images/healthcare2.jpg" alt="IMG-PRODUCT" style="height: 100%; width: 100%" ></center>
+                        <a href="login.php" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            View &nbsp;<span class="fa fa-user"></span>
+                        </a>
+                    </div>
 
-							<a href="login.php" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-							View &nbsp;<span class="fa fa-ambulance"></span>
-							</a>
-						</div>
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1">
+                            <span class="stext-105 cl3">Healthcare Resources and Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-3">
+                <!-- Block2 -->
+                <div class="block2 h-70">
+                    <div class="block2-pic hov-img0">
+                        <center><img src="images/healthcare3.jpg" alt="IMG-PRODUCT" style="height: 100%; width: 100%" ></center>
+                        <a href="login.php" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            View &nbsp;<span class="fa fa-user"></span>
+                        </a>
+                    </div>
 
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 ">
-								
-								<span class="stext-105 cl3 text-center">
-									Emegergency
-								</span>
-							</div>
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1">
+                            <span class="stext-105 cl3">Exercise and Nutrition Guidance:</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-3">
+                <!-- Block2 -->
+                <div class="block2 h-70">
+                    <div class="block2-pic hov-img0">
+                        <center><img src="images/healthcare4.jpg" alt="IMG-PRODUCT" style="height: 90%; width: 100%" ></center>
+                        <a href="login.php" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            View &nbsp;<span class="fa fa-user"></span>
+                        </a>
+                    </div>
 
-						</div>
-					</div>
-				</div>
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1">
+                            <span class="stext-105 cl3">Personalized Content</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<center><img src="images/product-07.png" alt="IMG-PRODUCT"></center>
+            
+        </div>
+    </div>
+</section>
 
-							<a href="login.php" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-							View &nbsp;<span class="fa fa-user"></span>
-							</a>
-						</div>
 
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div  class="block2-txt-child1">
-								<span class="stext-105 cl3">
-								Paediatrics
-								</span>
-							</div>
 
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-
-		</div>
-	</section>
 
 
 	<!-- Footer -->
@@ -308,14 +337,14 @@ include "connect.php";
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-	<script>
+	<!-- <script>
 		$(".js-select2").each(function(){
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
 			});
 		})
-	</script>
+	</script> -->
 <!--===============================================================================================-->
 	<script src="vendor/daterangepicker/moment.min.js"></script>
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
@@ -400,6 +429,5 @@ include "connect.php";
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
 </body>
 </html>
