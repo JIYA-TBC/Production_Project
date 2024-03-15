@@ -1,0 +1,15 @@
+.hovid{
+text-decoration:none;
+transition:1s;
+
+}
+
+.hovid:hover{
+	text-decoration:none;
+transition:2s;
+color:brown;
+
+
+}
+
+

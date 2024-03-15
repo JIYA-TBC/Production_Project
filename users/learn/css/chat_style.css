@@ -1,0 +1,33 @@
+#openChat{
+    color: #0080C0;
+    font-size: 4em;
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+    cursor: pointer;
+}
+#chatDiv{
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    height: 320px;
+    width: 300px;
+    background-color: #ffffff;
+    z-index: 3001;
+}
+#chatDisplay{
+    height: 190px;
+    overflow: auto;
+}
+.inputDiv{
+    margin: 10px auto;
+}
+.closeChat{
+    float:right;
+}
+.chatOpen{
+    display:block;
+}
+.chatClose{
+    display: none;
+}
