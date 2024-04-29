@@ -2,7 +2,8 @@
 
     <div class="col-md-12 mt-3" id="divsub" >
         <?php
-            $query="select * from  vidl_ink where level='".$stage."' ";
+       
+            $query="select * from  vidl_ink where level='Postnatal' ";
             $runquery=mysqli_query($con, $query) or die(mysqli_error($con));
             while($counttot=mysqli_fetch_object($runquery)){
         ?>	

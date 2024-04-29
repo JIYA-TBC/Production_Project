@@ -80,8 +80,7 @@ if (!isset($_SESSION['passi'])){
 
 <!-- SUBJECT -->
 <?php include "function/subjc.php"; ?>
-                 
-                </div>
+        </div>
               </div>
             </div>
           </div>

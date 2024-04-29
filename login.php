@@ -191,9 +191,6 @@ function openn(){
 		</div>
 	</section>	
 	
-	.0710	607416	include( 'D:\xampp\htdocs\Postpartum_pal\users\learn\function\pro.php )	...\index.php:100
-0%
-
 
 	<!-- Footer -->
 	<?php include "connect/footer.php"; ?>
@@ -235,8 +232,8 @@ function openn(){
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-	<script src="js/map-custom.js"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+	<script src="js/map-custom.js"></script> -->
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 

@@ -35,11 +35,11 @@
 						</li>
 
 						<li class="">
-							<a href="index.php" style="color: #000; font-size: 15px;"><span class="fa fa-info-circle"></span> About</a>
+							<a href="about.php" style="color: #000; font-size: 15px;"><span class="fa fa-info-circle"></span> About</a>
 						</li>
 
 						<li class="">
-							<a href="index.php" style="color: #000; font-size: 15px;"><span class="fa fa-phone"></span> Contact</a>
+							<a href="contact.php" style="color: #000; font-size: 15px;"><span class="fa fa-phone"></span> Contact</a>
 						</li>
 
 						<li class="por" style="color: black; font-size: 15px;">
@@ -157,7 +157,7 @@
 	<div class="header-cart flex-col-l p-l-65 p-r-25">
 		<div class="header-cart-title flex-w flex-sb-m p-b-8">
 			<span class="mtext-103 cl2 text-primary">
-				Post-natal Care system
+				Post-Partum Care system
 			</span>
 
 			<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">

@@ -163,7 +163,7 @@ return $data;
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="user">
 
                     <div class="form-group">
-                        <select style="font-size:;" name="doc" class="form-control" required="required">
+                        <select style="font-size:10px;" name="doc" class="form-control" required="required">
                                     <option value="">------- Choose Doctor ------</option>
                                         <!-- php here -->
                                         <?php
@@ -314,15 +314,7 @@ return $data;
       </tbody>
     </table>
 				 
-	</div>
-				 
-
-
-				 
-				  
-				  
-			  
-                 
+	</div>        
                 </div>
               </div>
             </div>
@@ -332,9 +324,7 @@ return $data;
           <div class="row">
 
             <!-- Content Column -->
-            
-
-          
+        
           </div>
 
         </div>

@@ -112,6 +112,7 @@ function test_input($data) {
          
       $top=test_input($_POST["topic"]);
       $link=test_input($_POST["vidlink"]);
+      $sta_ge=test_input($_POST["sta_ge"]);
       
 	  $check2=mysqli_query($con,"select * from vidl_ink where title LIKE '%".mysqli_real_escape_string($con,$top)."%' ");
 
@@ -121,9 +122,8 @@ if($row2 > 0 ){
          echo"<script>alert('There is a similar topic... Do change it')</script>";    
     }
 	else{
-$senddata2 = mysqli_query($con,"insert into vidl_ink (level,title,vid_link) values
-    ('".mysqli_real_escape_string($con,$stage)."','".mysqli_real_escape_string($con,$top)."','".mysqli_real_escape_string($con,$link)."'
-)")or die(mysqli_error($con));	
+$senddata2 = mysqli_query($con,"insert into vidl_ink (level,title,vid_link,sta_ge) values
+    ('".mysqli_real_escape_string($con,$stage)."','".mysqli_real_escape_string($con,$top)."','".mysqli_real_escape_string($con,$link)."','".mysqli_real_escape_string($con,$sta_ge)."')")or die(mysqli_error($con));	
 	}
 	
 	if(@$senddata2){
@@ -142,6 +142,14 @@ $senddata2 = mysqli_query($con,"insert into vidl_ink (level,title,vid_link) valu
                     <div class="form-group">
                       <input type="text" class="form-control form-control" name="topic" placeholder="Topic..." required="">
                     </div>
+                    <div class="form-group">
+    <select class="form-control" name="sta_ge" required="">
+        <option value="">Select Stage</option>
+        <option value="Stage 1">Stage 1</option>
+        <option value="Stage 2">Stage 2</option>
+    </select>
+</div>
+
 					
                     <div class="form-group">
                       <input type="text" class="form-control form-control" name="vidlink" placeholder="Add a video link..." required="">
