@@ -129,9 +129,6 @@ if(!isset($_SESSION['cur_user'])){
           <div class="row">
 
             <!-- Content Column -->
-            
-
-          
           </div>
 
         </div>

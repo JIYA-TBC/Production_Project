@@ -74,26 +74,47 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="immunization.php">
-          <i class="fas fa-syringe"></i>
-          <span>Immunization</span></a>
-      </li>
+    <a class="nav-link" href="immunization.php">
+        <i class="fas fa-syringe"></i>
+        <span>Immunization</span>
+    </a>
+</li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="graph.php">
-          <i class="fas fa-syringe"></i>
-          <span>graph</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="quiz.php">
-          <i class="fas fa-syringe"></i>
-          <span>Test your self</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="bookapp.php">
-          <i class="fas fa-fw fa-edit"></i>
-          <span>Book Appointment</span></a>
-      </li>
+<li class="nav-item">
+    <a class="nav-link" href="graph.php">
+        <i class="fas fa-chart-line"></i>
+        <span>Graph</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="bleeding_assessment.php">
+        <i class="fas fa-tint"></i>
+        <span>Hemorrhage</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="symptom_tracking.php">
+        <i class="fas fa-heartbeat"></i>
+        <span>Symptom Tracking</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="quiz.php">
+        <i class="fas fa-question"></i>
+        <span>Test your self</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="bookapp.php">
+        <i class="fas fa-fw fa-edit"></i>
+        <span>Book Appointment</span>
+    </a>
+</li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">

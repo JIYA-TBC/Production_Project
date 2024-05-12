@@ -188,7 +188,7 @@ echo"<script>alert('An error occured,please try again..')</script>";
                   <div class="form-group">
                     <select style="font-size:15px;" name="stage" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" required="required">
                       <option value="">------- Department ------</option>
-                      <option value="Postnatal">Postnatal</option>
+                      <option value="Post-Partum">Post-Partum</option>
                     </select>
                   </div>
                                    

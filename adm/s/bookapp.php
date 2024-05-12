@@ -22,7 +22,7 @@ if (!isset($_SESSION['passiw'])){
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Postnatal - Booked Appointments</title>
+  <title>Post-Partum - Booked Appointments</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

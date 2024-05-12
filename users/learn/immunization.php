@@ -99,17 +99,19 @@ if (!isset($_SESSION['cur_user'])) {
                         <h6 style="font-weight: bold;">Immunization Vaccine and Age</h6>
                     </div>
                     <div class="" >
+                    <form action="update_immunization.php" method="post">
                         <table class="table table-striped table-bordered table-hover" >
                                 <thead>
                                 <tr>
                                 <th>Vaccine Name</th>
                                 <th>Vaccine Age in weeks</th>
+                                <th>Mark as Taken</th>
                                 </tr>
                                 </thead>
                             <tbody>
                         <!-- php here -->
                         <?php
-                            $mysqli1="select * from  imm_uze where stage ='$stage' ";
+                            $mysqli1="select * from  imm_uze where stage ='Postnatal' ";
                             $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
                             while($row2 = mysqli_fetch_object($myquery1)){
 
@@ -117,11 +119,14 @@ if (!isset($_SESSION['cur_user'])) {
                                 <tr class="">    
                                 <td><?php echo $row2->vaccname; ?></td>
                                 <td><?php echo $row2->vaccage; ?></td>
+                                <td><input type="checkbox" name="immunizations[]" value="<?php echo $row2->vaccname; ?>"></td>
+                               
                                 </tr>
                         <?php  } ?>
 
                             </tbody>
                         </table>
+                        <button type="submit" class="btn btn-primary">Mark as Taken</button>
                     </div>
                 </div>
       <br>

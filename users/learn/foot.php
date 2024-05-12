@@ -6,8 +6,13 @@
     </div>
 </div>
 
+
 <!-- Footer Starts Here  -->
 <?php 
+session_start();
+$user_iid = $_SESSION["id"];
+
+
 if(isset($_SESSION['active_chat'])){
     $iconClass = "chatClose";
     $chatDivClass = "chatOpen";
@@ -67,7 +72,7 @@ if(isset($_SESSION['active_chat'])){
             <div class="card-body" style="height:270px; padding:0 10px;">
                 <?php
                     if(isset($_POST['startchat'])){
-                        $user_id = $_SESSION['cur_user'];
+                        $user_id = $user_iid;
                         $fullname = $_POST['username'];
                         $phone = $_POST['phone'];
                         $email = $_POST['email'];
@@ -80,7 +85,8 @@ if(isset($_SESSION['active_chat'])){
                             $queryInsertChat = $con->query("INSERT INTO chatuser(user_id, fullname, phone, email) VALUES('".$user_id."','".$fullname."','".$phone."','".$email."')");
                             if($queryInsertChat == true){
                                 $_SESSION['active_chat'] = $user_id;
-
+            echo "<script>window.location.href='chatting_page.php';</script>"; // Redirect to the chatting page using JavaScript
+            exit(); // Stop executing the current script
                                                                 
                             }
                             
@@ -88,6 +94,8 @@ if(isset($_SESSION['active_chat'])){
                     }
                 ?>
                 <form method="post">
+                <?php echo $user_iid; ?>
+                <input type="hidden" name="user_id" value="<?php echo $user_iid; ?>">
                     <div class="inputDiv">
                         <div><i class="fa fa-user"></i> Fullname:</div>
                         <input type="text" class="form-control" name="username" value="<?php echo $sn." ".$fn." ".$ln; ?>" readonly required />
