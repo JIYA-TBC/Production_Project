@@ -161,7 +161,7 @@ function openn(){
 		}
 
 		if(@$senddata2){
-		echo"<script>alert('$fname, you Registered succesfully')</script>";
+		echo"<script>alert('$fname, Otp has been sent to your email. Please enter your otp.')</script>";
 
 								$_SESSION['passi']=$row['pass'];
 									$_SESSION['mail']=$row['email'];
@@ -173,7 +173,11 @@ function openn(){
 									$_SESSION['sta']=$row['stage'];
 									$_SESSION['ph']=$row['phone'];										
 									
-									echo "<script> location.replace('users/learn/')</script>";
+									echo "<script>";
+    
+	echo "var recipientEmail = '" . $email . "';";
+    echo "window.location.replace('mail.php?email=' + recipientEmail);";
+    echo "</script>";
 		}
 
 		else{

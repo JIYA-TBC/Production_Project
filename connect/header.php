@@ -41,6 +41,9 @@
 						<li class="">
 							<a href="contact.php" style="color: #000; font-size: 15px;"><span class="fa fa-phone"></span> Contact</a>
 						</li>
+						<li class="">
+							<a href="superadmin.php" style="color: #000; font-size: 15px;"><span class="fa fa-phone"></span> Manage Report</a>
+						</li>
 
 						<li class="por" style="color: black; font-size: 15px;">
 							<a style="color: black; font-size: 15px;"><span class="fa fa-globe"></span> Portal</a>
@@ -120,6 +123,9 @@
 			<li>
 				<a href="contact.php"><span class="fa fa-phone"></span> Contact</a>
 			</li>
+			<li>
+				<a href="superadmin.php"><span class="fa fa-sign-in"></span> Manage Report</a>
+			</li>			
 
 			<li>
 				<a href="login.php"><span class="fa fa-sign-in"></span> Login</a>
