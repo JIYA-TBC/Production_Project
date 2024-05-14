@@ -8,8 +8,7 @@ $otp = mt_rand(100000, 999999);
 $_SESSION['otp'] = $otp;
 
 // Set your API credentials
-$apiKey = '5868f9832ca2c9d12212d959c6c63bed-32a0fef1-29b6dc24';
-$domain = 'sandbox05be7b801fce46508249cd0510d25d0b.mailgun.org';
+
 $recipient = 'jroy48695@gmail.com';
 $from = 'ms21jiya@gmail.com';
 $subject = 'Hello from Mailgun';
