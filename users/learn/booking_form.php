@@ -4,10 +4,11 @@
                     <div class="w3-card col-md-6" style="border:1px solid #ccc; padding:20px;">
 
                       
-                      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="user">
+                    <form action="bookapp.php" method="POST" class="user">
+
 
                         <div class="form-group">
-                          <input type="text" class="form-control" name="location" placeholder="Enter Your Location">
+                          <!-- <input type="text" class="form-control" name="location" placeholder="Enter Your Location"> -->
 
                           <select style="font-size:10px;" name="doc" class="form-control" required="required">
                             <option value="">------- Choose Doctor ------</option>
