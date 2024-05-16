@@ -254,7 +254,33 @@ if ($result) {
     <button class="btn btn-primary btn-user btn-block" name="bk"><b><span class="fa fa-send"></span> Book Appointment</b></button></div>
 </form>
 
+<script>
+function fetchDoctors() {
+    var address = document.getElementById('address').value;
+    var doctorsDropdown = document.getElementById('doctors');
+    doctorsDropdown.innerHTML = '<option value="">------- Choose Doctor ------</option>';
 
+    if (address !== "") {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "fetch_doctors.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var doctors = JSON.parse(xhr.responseText);
+                doctors.forEach(function(doctor) {
+                    var option = document.createElement('option');
+                    option.value = doctor.fullname;
+                    option.textContent = doctor.fullname + " - " + doctor.address;
+                    doctorsDropdown.appendChild(option);
+                });
+            }
+        };
+
+        xhr.send("address=" + encodeURIComponent(address));
+    }
+}
+</script>
 
 
 
