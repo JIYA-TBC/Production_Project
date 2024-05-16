@@ -30,4 +30,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['immunizations'])) {
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
-?>

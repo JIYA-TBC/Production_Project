@@ -1,15 +1,15 @@
 <?php
 session_start();
 include "session_st.php";
-include"../../connect.php";
+include "../../connect.php";
 
 
-if (!isset($_SESSION['passi'])){
+if (!isset($_SESSION['passi'])) {
   header("location:../../login.php");
   exit();
-} 
+}
 
-if(!isset($_SESSION['cur_user'])){
+if (!isset($_SESSION['cur_user'])) {
   $_SESSION['cur_user'] = $_SERVER['REMOTE_ADDR'];
 }
 ?>
@@ -18,7 +18,7 @@ if(!isset($_SESSION['cur_user'])){
 <html lang="en">
 
 <head>
- <link rel="icon" href="img/faviconn.png">
+  <link rel="icon" href="img/faviconn.png">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +29,7 @@ if(!isset($_SESSION['cur_user'])){
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  
+
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -64,49 +64,50 @@ if(!isset($_SESSION['cur_user'])){
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">View Answers</h1>
-            
-          </div>
-                </div>
-                <!-- Card Body -->
-    <div class="row container">
-						
-    <div class="col-md-9 " style="overflow-x: auto;">
-        <table class="table table-striped table-bordered table-hover" 
-      id="dataTables-example" style="width:100%;">
-    
-    <thead>
-       <tr>
-       <th>Title</th>
-       <th>Fullname</th>
-       <th>Question</th>
-       <th>Answer</th>            
-   </tr>
-</thead>
-<tbody>
-<!-- php here -->
-<?php
-    if(!isset($_GET['id'])){
-	echo "sorry";	
-	}
-	
-	else{
-    $geti=$_GET['id'];
-    $queryo=mysqli_query($con,"select * from que_st where id = '".$geti."' ");
-    while($row = mysqli_fetch_object($queryo)){    
-    ?>
 
-   <tr class="">    
-                  <td><?php echo $row->title; ?></td>
-                  <td><?php echo $row->fullname; ?></td>
-                  <td><?php echo $row->question; ?></td>                 
-                  <td><?php echo $row->ans; ?></td>
+          </div>
+        </div>
+        <!-- Card Body -->
+        <div class="row container">
+
+          <div class="col-md-9 " style="overflow-x: auto;">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="width:100%;">
+
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Fullname</th>
+                  <th>Question</th>
+                  <th>Answer</th>
                 </tr>
-               <?php  }} ?>
-      </tbody>
-    </table>
-				 
-	</div></div></div>
+              </thead>
+              <tbody>
+                <!-- php here -->
+                <?php
+                if (!isset($_GET['id'])) {
+                  echo "sorry";
+                } else {
+                  $geti = $_GET['id'];
+                  $queryo = mysqli_query($con, "select * from que_st where id = '" . $geti . "' ");
+                  while ($row = mysqli_fetch_object($queryo)) {
+                ?>
+
+                    <tr class="">
+                      <td><?php echo $row->title; ?></td>
+                      <td><?php echo $row->fullname; ?></td>
+                      <td><?php echo $row->question; ?></td>
+                      <td><?php echo $row->ans; ?></td>
+                    </tr>
+                <?php  }
+                } ?>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
       <?php include "connect/foot.php"; ?>
-  </div>
+    </div>
 </body>
+
 </html>

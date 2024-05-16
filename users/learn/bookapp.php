@@ -1,24 +1,27 @@
 <?php
 session_start();
 include "session_st.php";
-include"../../connect.php";
+include "../../connect.php";
 
 
-if (!isset($_SESSION['passi'])){
+if (!isset($_SESSION['passi'])) {
   header("location:../../login.php");
   exit();
-} 
+}
 
-if(!isset($_SESSION['cur_user'])){
+if (!isset($_SESSION['cur_user'])) {
   $_SESSION['cur_user'] = $_SERVER['REMOTE_ADDR'];
 }
+?>
+<?php
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
- <link rel="icon" href="img/mainlogo.png">
+  <link rel="icon" href="img/mainlogo.png">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -113,282 +116,297 @@ if(!isset($_SESSION['cur_user'])){
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-				<div class="row pb-5 container">
-        <div class="w3-card col-md-6" style="border:1px solid #ccc; padding:20px;">
+                  <div class="row pb-5 container">
+                    <div class="w3-card col-md-6" style="border:1px solid #ccc; padding:20px;">
 
-        <?php
+                      <?php
 
-             if (isset($_POST['bk'])){
+                      if (isset($_POST['bk'])) {
 
-       //form validation to avoid exploit
-function test_input($data) {
-     $data = trim($data);
-   $data = stripslashes($data);
- $data = htmlspecialchars($data);
-return $data;
+                        //form validation to avoid exploit
+                        function test_input($data)
+                        {
+                          $data = trim($data);
+                          $data = stripslashes($data);
+                          $data = htmlspecialchars($data);
+                          return $data;
+                        }
+                        //exploit ends
+
+                        $doc = test_input($_POST["doc"]);
+                        $dept = test_input($_POST["stage"]);
+                        $fullname = test_input($_POST["fullname"]);
+                        $phone = test_input($_POST["phone"]);
+                        $email = test_input($_POST["email"]);
+                        $date = test_input($_POST["date"]);
+                        $time = test_input($_POST["time"]);
+                        $qus = test_input($_POST["qus"]);
+
+                        $check2 = mysqli_query($con, "select * from book_app where appdate ='" . mysqli_real_escape_string($con, $date) . "' and apptime ='" . mysqli_real_escape_string($con, $time) . "' and docname ='" . mysqli_real_escape_string($con, $doc) . "' ");
+
+                        $row2 = mysqli_num_rows($check2);
+                        if ($row2 > 0) {
+                          echo "<script>alert('Sorry this day has been booked... Do change it')</script>";
+                        } else {
+
+                          $senddata2 = mysqli_query($con, "insert into book_app (docname,dept,fullname,phone,email,appdate,apptime,appnote) values
+    ('" . mysqli_real_escape_string($con, $doc) . "','" . mysqli_real_escape_string($con, $dept) . "','" . mysqli_real_escape_string($con, $fullname) . "','" . mysqli_real_escape_string($con, $phone) . "','" . mysqli_real_escape_string($con, $email) . "','" . mysqli_real_escape_string($con, $date) . "','" . mysqli_real_escape_string($con, $time) . "','" . mysqli_real_escape_string($con, $qus) . "')") or die(mysqli_error($con));
+                        }
+                        if (@$senddata2) {
+                          // Echo JavaScript alert
+                          echo "<script>alert('$fullname, Your Appointment was successfully Booked.')</script>";
+                          
+                          // Use JavaScript to redirect to follow-up page
+                          echo "<script>window.location.href = 'follow-up-page.php?date=" . urlencode($date) . '&email=' . urlencode($email)."';</script>";
+                      } else {
+                          echo "<script>alert('An error occurred')</script>";
+                      }
+                      }
+
+                      ?>
+                      
+                      <?php
+// Assuming this variable holds the user's ID
+
+// Fetch the address from session data where userid matches $us
+$addr = ""; // Default value if address is not found
+
+// Execute the SQL query to fetch the address
+$query = "SELECT addr FROM usr WHERE user_id = '" . mysqli_real_escape_string($con, $us) . "'";
+$result = mysqli_query($con, $query);
+
+// Check if the query executed successfully
+if ($result) {
+    // Fetch the address from the result
+    $row = mysqli_fetch_assoc($result);
+    if ($row) {
+        $addr = $row['addr'];
+    }
 }
-//exploit ends
 
-  $doc=test_input($_POST["doc"]);
-  $dept=test_input($_POST["stage"]);
-  $fullname=test_input($_POST["fullname"]);
-  $phone=test_input($_POST["phone"]);
-  $email=test_input($_POST["email"]);
-  $date=test_input($_POST["date"]);
-  $time=test_input($_POST["time"]);
-  $qus=test_input($_POST["qus"]);
+// echo $addr;
+?>
 
-  $check2=mysqli_query($con,"select * from book_app where appdate ='".mysqli_real_escape_string($con,$date)."' and apptime ='".mysqli_real_escape_string($con,$time)."' and docname ='".mysqli_real_escape_string($con,$doc)."' ");
+                      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="user">
+                      <div class="form-group">
+        <select id="address" name="address" class="form-control" required="required" onchange="fetchDoctors()">
+            <option value="">------- Choose location ------</option>
+            <option value="<?php echo htmlspecialchars($addr); ?>">Doctors Near Me</option>
 
-    $row2=mysqli_num_rows($check2);  
-    if($row2 > 0 ){
-       echo"<script>alert('Sorry this day has been booked... Do change it')</script>";
-    }
-
-    else{
-
-    $senddata2 = mysqli_query($con,"insert into book_app (docname,dept,fullname,phone,email,appdate,apptime,appnote) values
-    ('".mysqli_real_escape_string($con,$doc)."','".mysqli_real_escape_string($con,$dept)."','".mysqli_real_escape_string($con,$fullname)."','".mysqli_real_escape_string($con,$phone)."','".mysqli_real_escape_string($con,$email)."','".mysqli_real_escape_string($con,$date)."','".mysqli_real_escape_string($con,$time)."','".mysqli_real_escape_string($con,$qus)."')")or die(mysqli_error($con));	
-
-    }
-    if(@$senddata2){
-    echo"<script>alert('$fullname, Your Appointment was successfully Booked')</script>";	
-    }
-    else{
-    echo"<script>alert('An error occured')</script>";
-    }
-        }
-
-    ?>
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="user">
-
-                    <div class="form-group">
-                        <select style="font: size 12px;" name="doc" class="form-control" required="required">
-                                    <option value="">------- Choose Doctor ------</option>
-                                        <!-- php here -->
-                                        <?php
-                                            $mysqli1="select * from  ad_in ";
-                                            $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
-                                            while($row2 = mysqli_fetch_object($myquery1)){
-                                        ?>
-                                            <option value="<?php echo $row2->fullname; ?>">
-                                                <?php echo $row2->fullname; ?>
-                                            </option>
-                                        <?php } ?>               
-                        </select>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <select style="font-size:px;" name="stage" class="form-control" required="required">
-                                    <option value=""> Choose Department </option>
-                                    <option value="Post-Partum">Post-Partum</option>
-                                    <!-- <option value="O & G">O & G</option>
-                                    <option value="Radiology">Radiology</option>
-                                    <option value="Nephrology">Nephrology</option>
-                                    <option value="Paediatrics">Paediatrics</option>                      -->
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control form-control" name="fullname" value="<?php echo $sn." ".$fn." ".$ln; ?>" readonly>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control form-control" name="phone" value="<?php echo $ph; ?>" readonly>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control form-control" name="email" value="<?php echo $mail; ?>" readonly>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span class="fa fa-calendar"></span> date
-                                <input type="date" class="form-control form-control" name="date" placeholder="date" required>
-                            </div>
-                            <div class="col-md-6">
-                                <span class="fa fa-clock-o"></span> time
-                                <input type="time" class="form-control form-control" name="time" placeholder="time" required>
-                            </div>
-                        </div>
-                    </div>
-
-					<div class="form-group" >
-                        <textarea style="resize:none;" class="form-control " name="qus" rows=4 placeholder="Enter Appointment Note here..."></textarea>
-                    </div>
-
-                    <button class="btn btn-primary btn-user btn-block" name="bk"><b><span class="fa fa-send"></span> Book Appointment</b>
-                    </button>
-
-                    <hr> 
-                    </div>                 
-              </form>
-
-            <div class="col-md-1"></div>
-
-            <div class=" col-md-5">
-                <div class="w3-card">
-                    <div class="w3-container w3-blue text-center pt-3 pb-2" >
-                        <h6 style="font-weight: bold;">Doctors & their Department</h6>
-                    </div>
-                    <div class="" >
-                        <table class="table table-striped table-bordered table-hover" >
-                                <thead>
-                                <tr>
-                                <th>Doctor</th>
-                                <th>Department</th>
-                                </tr>
-                                </thead>
-                            <tbody>
-                        <!-- php here -->
-                        <?php
-                            $mysqli1="select * from  ad_in ";
-                            $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
-                            while($row2 = mysqli_fetch_object($myquery1)){
-
-                        ?>
-                                <tr class="">    
-                                <td><?php echo $row2->fullname; ?></td>
-                                <td><?php echo $row2->stage; ?></td>
-                                </tr>
-                        <?php  } ?>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <?php
+            $query = "SELECT DISTINCT address FROM ad_in";
+            $result = mysqli_query($con, $query) or die(mysqli_error($con));
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<option value="' . $row['address'] . '">' . $row['address'] . '</option>';
+            }
+            ?>
+        </select>
     </div>
 
-    <div class="row container">					
-      <div class="col-md-12" style="overflow-x: auto;" >
-        <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="width:100%;">
+    <div class="form-group">
+        <select id="doctors" name="doc" class="form-control" required="required">
+            <option value="">------- Choose Doctor ------</option>
+        </select>
+    </div>
 
-        <thead>
-        <tr>
-        <th>Doctor</th>
-        <th>Department</th>
-        <th>Appointment Note</th>
-        <th>Date</th>     
-        <th>Time</th>
-        <th>Status</th>
-	    <th>Delete</th>        
-        </tr>
-        </thead>
-      <tbody>
-      <!-- php here -->
-      <?php
-          $mysqli1="select * from  book_app where email='$mail' ";
-          $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
-          while($row2 = mysqli_fetch_object($myquery1)){
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <select style="font-size:px;" name="stage" class="form-control" required="required">
+                    <option value=""> Choose Department </option>
+                    <option value="Post-Partum">Post-Partum</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control form-control" name="fullname" value="<?php echo $sn . " " . $fn . " " . $ln; ?>" readonly>
+            </div>
+        </div>
+    </div>
 
-      ?> 
-      <tr class="" style="color: #444;">    
-          <td><?php echo $row2->docname; ?></td>
-          <td><?php echo $row2->dept; ?></td>
-          <td><?php echo $row2->appnote; ?></td>
-          <td><?php echo $row2->appdate; ?></td>
-          <td><?php echo $row2->apptime; ?></td>
-          <td>
-            <?php
-                if($row2->status == "Approved"){ 
-                echo "$row2->status <span class='fa fa-check text-success'></span>"; 
-                }else{ 
-                    echo "$row2->status <span class='fa fa-close text-danger'></span>"; 
-                }    
-            ?>
-          </td>
-          <td><a onclick="return confirm('Are you sure you want to delete?')" href="deletepdf.php?id=<?php echo $row2->id; ?>"><span class="fa fa-trash"></span></a></td>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control form-control" name="phone" value="<?php echo $ph; ?>" readonly>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control form-control" name="email" value="<?php echo $mail; ?>" readonly>
+            </div>
+        </div>
+    </div>
 
-      </tr>
-      <?php  } ?>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <span class="fa fa-calendar"></span> date
+                <input type="date" class="form-control form-control" name="date" placeholder="date" required>
+            </div>
+            <div class="col-md-6">
+                <span class="fa fa-clock-o"></span> time
+                <input type="time" class="form-control form-control" name="time" placeholder="time" required>
+            </div>
+        </div>
+    </div>
 
-      </tbody>
-    </table>
+    <div class="form-group">
+        <textarea style="resize:none;" class="form-control " name="qus" rows=4 placeholder="Enter Appointment Note here..."></textarea>
+    </div>
 
-	</div>
-
-
-
-
-
+    <button class="btn btn-primary btn-user btn-block" name="bk"><b><span class="fa fa-send"></span> Book Appointment</b></button></div>
+</form>
 
 
 
+
+
+                    <div class="col-md-1"></div>
+
+                    <div class=" col-md-5">
+                      <div class="w3-card">
+                        <div class="w3-container w3-blue text-center pt-3 pb-2">
+                          <h6 style="font-weight: bold;">Doctors & their Department</h6>
+                        </div>
+                        <div class="">
+                          <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                              <tr>
+                                <th>Doctor</th>
+                                <th>Department</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- php here -->
+                              <?php
+                              $mysqli1 = "select * from  ad_in ";
+                              $myquery1 = mysqli_query($con, $mysqli1) or die(mysqli_error($con));
+                              while ($row2 = mysqli_fetch_object($myquery1)) {
+
+                              ?>
+                                <tr class="">
+                                  <td><?php echo $row2->fullname; ?></td>
+                                  <td><?php echo $row2->stage; ?></td>
+                                </tr>
+                              <?php  } ?>
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row container">
+                    <div class="col-md-12" style="overflow-x: auto;">
+                      <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="width:100%;">
+
+                        <thead>
+                          <tr>
+                            <th>Doctor</th>
+                            <th>Department</th>
+                            <th>Appointment Note</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- php here -->
+                          <?php
+                          $mysqli1 = "select * from  book_app where email='$mail' ";
+                          $myquery1 = mysqli_query($con, $mysqli1) or die(mysqli_error($con));
+                          while ($row2 = mysqli_fetch_object($myquery1)) {
+
+                          ?>
+                            <tr class="" style="color: #444;">
+                              <td><?php echo $row2->docname; ?></td>
+                              <td><?php echo $row2->dept; ?></td>
+                              <td><?php echo $row2->appnote; ?></td>
+                              <td><?php echo $row2->appdate; ?></td>
+                              <td><?php echo $row2->apptime; ?></td>
+                              <td>
+                                <?php
+                                if ($row2->status == "Approved") {
+                                  echo "$row2->status <span class='fa fa-check text-success'></span>";
+                                } else {
+                                  echo "$row2->status <span class='fa fa-close text-danger'></span>";
+                                }
+                                ?>
+                              </td>
+                              <td><a onclick="return confirm('Are you sure you want to delete?')" href="deletepdf.php?id=<?php echo $row2->id; ?>"><span class="fa fa-trash"></span></a></td>
+
+                            </tr>
+                          <?php  } ?>
+
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <!-- Content Row -->
+            <div class="row">
+
+              <!-- Content Column -->
+
+
+
+            </div>
+
           </div>
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Content Column -->
-
-
-
-          </div>
+          <!-- /.container-fluid -->
 
         </div>
-        <!-- /.container-fluid -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <?php include "connect/foot.php"; ?>
+        <!-- End of Footer -->
 
       </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <?php include "connect/foot.php"; ?>
-      <!-- End of Footer -->
+      <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+    <!-- Logout Modal-->
+   
 
-  <!-- Logout Modal-->
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <script src="../../adm/s/js/dataTables/jquery.dataTables.js"></script>
-  <script src="../../adm/s/js/dataTables/dataTables.bootstrap.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#dataTables-example').dataTable();
-            });
+    <script src="../../adm/s/js/dataTables/jquery.dataTables.js"></script>
+    <script src="../../adm/s/js/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+      });
     </script>
 
-  <!-- Page level plugins -->
+    <!-- Page level plugins -->
 
 
-  <!-- Page level custom scripts -->
+    <!-- Page level custom scripts -->
 
-  <!-- Livechat for this template-->
+    <!-- Livechat for this template-->
     <?php
-//        include_once('foot.php');
+    //        include_once('foot.php');
     ?>
- <!-- Livechat end -->
+    <!-- Livechat end -->
 
 
 </body>

@@ -24,7 +24,8 @@ if (mysqli_num_rows($result_check_response) > 0) {
 }
 
 // Function to retrieve mood data for the last 30 days
-function getMoodData() {
+function getMoodData()
+{
     global $con, $user_ip;
     $mood_data = array();
 
@@ -131,11 +132,11 @@ $mood_data = getMoodData();
                                     <h6 class="m-0 font-weight-bold text-primary">Quiz</h6>
                                     <div class="dropdown no-arrow"></div>
                                 </div>
-                                <?php if ($already_answered_today): ?>
+                                <?php if ($already_answered_today) : ?>
                                     <div class="alert alert-warning" role="alert">
                                         You have already answered the questions today.
                                     </div>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <form id="moodAssessmentForm" method="post">
                                         <label for="question1">Question 1: Do you often feel sad or depressed?</label>
                                         <select id="question1" name="question1">

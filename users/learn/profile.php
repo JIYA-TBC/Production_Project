@@ -2,7 +2,7 @@
 session_start();
 include "session_st.php";
 
-include"../../connect.php";
+include "../../connect.php";
 include "count.php";
 
 

@@ -11,6 +11,7 @@ if (isset($_POST['otp'])) {
     } else {
         // OTP is incorrect, show error message
         echo "<script>alert('Incorrect OTP. Please try again.')</script>";
+        
     }
 } else {
     // Redirect user if OTP is not entered

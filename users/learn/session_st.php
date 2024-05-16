@@ -10,5 +10,4 @@ $pi = $_SESSION['picture'];
 $us = $_SESSION['userid'];
 $stage = $_SESSION['sta'];
 $ph = $_SESSION['ph'];
-
 ?>
