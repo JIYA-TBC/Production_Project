@@ -155,132 +155,133 @@ if (!isset($_SESSION['cur_user'])) {
                         if (@$senddata2) {
                           // Echo JavaScript alert
                           echo "<script>alert('$fullname, Your Appointment was successfully Booked.')</script>";
-                          
+
                           // Use JavaScript to redirect to follow-up page
-                          echo "<script>window.location.href = 'follow-up-page.php?date=" . urlencode($date) . '&email=' . urlencode($email)."';</script>";
-                      } else {
+                          echo "<script>window.location.href = 'follow-up-page.php?date=" . urlencode($date) . '&email=' . urlencode($email) . "';</script>";
+                        } else {
                           echo "<script>alert('An error occurred')</script>";
-                      }
+                        }
                       }
 
                       ?>
-                      
+
                       <?php
-// Assuming this variable holds the user's ID
+                      // Assuming this variable holds the user's ID
 
-// Fetch the address from session data where userid matches $us
-$addr = ""; // Default value if address is not found
+                      // Fetch the address from session data where userid matches $us
+                      $addr = ""; // Default value if address is not found
 
-// Execute the SQL query to fetch the address
-$query = "SELECT addr FROM usr WHERE user_id = '" . mysqli_real_escape_string($con, $us) . "'";
-$result = mysqli_query($con, $query);
+                      // Execute the SQL query to fetch the address
+                      $query = "SELECT addr FROM usr WHERE user_id = '" . mysqli_real_escape_string($con, $us) . "'";
+                      $result = mysqli_query($con, $query);
 
-// Check if the query executed successfully
-if ($result) {
-    // Fetch the address from the result
-    $row = mysqli_fetch_assoc($result);
-    if ($row) {
-        $addr = $row['addr'];
-    }
-}
+                      // Check if the query executed successfully
+                      if ($result) {
+                        // Fetch the address from the result
+                        $row = mysqli_fetch_assoc($result);
+                        if ($row) {
+                          $addr = $row['addr'];
+                        }
+                      }
 
-// echo $addr;
-?>
+                      // echo $addr;
+                      ?>
 
                       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="user">
-                      <div class="form-group">
-        <select id="address" name="address" class="form-control" required="required" onchange="fetchDoctors()">
-            <option value="">------- Choose location ------</option>
-            <option value="<?php echo htmlspecialchars($addr); ?>">Doctors Near Me</option>
+                        <div class="form-group">
+                          <select id="address" name="address" class="form-control" required="required" onchange="fetchDoctors()">
+                            <option value="">------- Choose location ------</option>
+                            <option value="<?php echo htmlspecialchars($addr); ?>">Doctors Near Me</option>
 
-            <?php
-            $query = "SELECT DISTINCT address FROM ad_in";
-            $result = mysqli_query($con, $query) or die(mysqli_error($con));
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<option value="' . $row['address'] . '">' . $row['address'] . '</option>';
-            }
-            ?>
-        </select>
-    </div>
+                            <?php
+                            $query = "SELECT DISTINCT address FROM ad_in";
+                            $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                            while ($row = mysqli_fetch_assoc($result)) {
+                              echo '<option value="' . $row['address'] . '">' . $row['address'] . '</option>';
+                            }
+                            ?>
+                          </select>
+                        </div>
 
-    <div class="form-group">
-        <select id="doctors" name="doc" class="form-control" required="required">
-            <option value="">------- Choose Doctor ------</option>
-        </select>
-    </div>
+                        <div class="form-group">
+                          <select id="doctors" name="doc" class="form-control" required="required">
+                            <option value="">------- Choose Doctor ------</option>
+                          </select>
+                        </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-6">
-                <select style="font-size:px;" name="stage" class="form-control" required="required">
-                    <option value=""> Choose Department </option>
-                    <option value="Post-Partum">Post-Partum</option>
-                </select>
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control" name="fullname" value="<?php echo $sn . " " . $fn . " " . $ln; ?>" readonly>
-            </div>
-        </div>
-    </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <select style="font-size:px;" name="stage" class="form-control" required="required">
+                                <option value=""> Choose Department </option>
+                                <option value="Post-Partum">Post-Partum</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <input type="text" class="form-control form-control" name="fullname" value="<?php echo $sn . " " . $fn . " " . $ln; ?>" readonly>
+                            </div>
+                          </div>
+                        </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control" name="phone" value="<?php echo $ph; ?>" readonly>
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control" name="email" value="<?php echo $mail; ?>" readonly>
-            </div>
-        </div>
-    </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <input type="text" class="form-control form-control" name="phone" value="<?php echo $ph; ?>" readonly>
+                            </div>
+                            <div class="col-md-6">
+                              <input type="text" class="form-control form-control" name="email" value="<?php echo $mail; ?>" readonly>
+                            </div>
+                          </div>
+                        </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-6">
-                <span class="fa fa-calendar"></span> date
-                <input type="date" class="form-control form-control" name="date" placeholder="date" required>
-            </div>
-            <div class="col-md-6">
-                <span class="fa fa-clock-o"></span> time
-                <input type="time" class="form-control form-control" name="time" placeholder="time" required>
-            </div>
-        </div>
-    </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <span class="fa fa-calendar"></span> date
+                              <input type="date" class="form-control form-control" name="date" placeholder="date" required>
+                            </div>
+                            <div class="col-md-6">
+                              <span class="fa fa-clock-o"></span> time
+                              <input type="time" class="form-control form-control" name="time" placeholder="time" required>
+                            </div>
+                          </div>
+                        </div>
 
-    <div class="form-group">
-        <textarea style="resize:none;" class="form-control " name="qus" rows=4 placeholder="Enter Appointment Note here..."></textarea>
-    </div>
+                        <div class="form-group">
+                          <textarea style="resize:none;" class="form-control " name="qus" rows=4 placeholder="Enter Appointment Note here..."></textarea>
+                        </div>
 
-    <button class="btn btn-primary btn-user btn-block" name="bk"><b><span class="fa fa-send"></span> Book Appointment</b></button></div>
-</form>
+                        <button class="btn btn-primary btn-user btn-block" name="bk"><b><span class="fa fa-send"></span> Book Appointment</b></button>
+                    </div>
+                    </form>
 
-<script>
-function fetchDoctors() {
-    var address = document.getElementById('address').value;
-    var doctorsDropdown = document.getElementById('doctors');
-    doctorsDropdown.innerHTML = '<option value="">------- Choose Doctor ------</option>';
+                    <script>
+                      function fetchDoctors() {
+                        var address = document.getElementById('address').value;
+                        var doctorsDropdown = document.getElementById('doctors');
+                        doctorsDropdown.innerHTML = '<option value="">------- Choose Doctor ------</option>';
 
-    if (address !== "") {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "fetch_doctors.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        if (address !== "") {
+                          var xhr = new XMLHttpRequest();
+                          xhr.open("POST", "fetch_doctors.php", true);
+                          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var doctors = JSON.parse(xhr.responseText);
-                doctors.forEach(function(doctor) {
-                    var option = document.createElement('option');
-                    option.value = doctor.fullname;
-                    option.textContent = doctor.fullname + " - " + doctor.address;
-                    doctorsDropdown.appendChild(option);
-                });
-            }
-        };
+                          xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                              var doctors = JSON.parse(xhr.responseText);
+                              doctors.forEach(function(doctor) {
+                                var option = document.createElement('option');
+                                option.value = doctor.fullname;
+                                option.textContent = doctor.fullname + " - " + doctor.address;
+                                doctorsDropdown.appendChild(option);
+                              });
+                            }
+                          };
 
-        xhr.send("address=" + encodeURIComponent(address));
-    }
-}
-</script>
+                          xhr.send("address=" + encodeURIComponent(address));
+                        }
+                      }
+                    </script>
 
 
 
@@ -403,7 +404,7 @@ function fetchDoctors() {
     </a>
 
     <!-- Logout Modal-->
-   
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

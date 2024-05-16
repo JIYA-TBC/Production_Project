@@ -6,8 +6,7 @@ $email=$_GET['email'];
 $date = $_GET['date'];
 $recipient = $email;
 $sender = 'ms21jiya@gmail.com';
-$apiKey = '60b4b28494cd3d27c850d3712f305f62-32a0fef1-0b0af1d5';
-$domain = 'sandboxb8938a4fe0764daf9dddf9e8e632ec75.mailgun.org';
+// $api
 $followUpDate = date('Y-m-d', strtotime($date . ' + 10 days'));
 
 // Set email parameters for initial email
