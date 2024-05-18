@@ -66,7 +66,6 @@ mysqli_close($con);
         <div class="row">
             <div class="col">
                 <a href="download_csv.php" class="btn btn-primary mb-3">Download Report as CSV</a>
-                <button class="btn btn-primary mb-3" onclick="printReport()">Print Report</button>
                 <?php if (isset($error)) : ?>
                     <div class="alert alert-danger" role="alert">
                         Error: <?php echo $error; ?>
