@@ -188,26 +188,30 @@ if (!isset($_SESSION['cur_user'])) {
                       ?>
 
                       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="user">
-                        <div class="form-group">
-                          <select id="address" name="address" class="form-control" required="required" onchange="fetchDoctors()">
-                            <option value="">------- Choose location ------</option>
-                            <option value="<?php echo htmlspecialchars($addr); ?>">Doctors Near Me</option>
+                        
+                      <div class="form-group">
+            <select id="doctors" name="doc" class="form-control" required="required">
+                <?php
+                // Fetch doctor's name from URL parameter
+                $doctorName = isset($_GET['doctor']) ? htmlspecialchars($_GET['doctor']) : '';
 
-                            <?php
-                            $query = "SELECT DISTINCT address FROM ad_in";
-                            $result = mysqli_query($con, $query) or die(mysqli_error($con));
-                            while ($row = mysqli_fetch_assoc($result)) {
-                              echo '<option value="' . $row['address'] . '">' . $row['address'] . '</option>';
-                            }
-                            ?>
-                          </select>
-                        </div>
+                // Populate the select option with the doctor's name
+                if (!empty($doctorName)) {
+                    echo "<option value='" . $doctorName . "'>" . $doctorName . "</option>";
+                } else {
+                    echo "<option value=''>------- Choose Doctor ------</option>";
+                }
+                ?>
+            </select>
+        
+<button id="redirectButton" class="btn btn-primary">Go to Map</button>
+</div>
+<script>
+  document.getElementById('redirectButton').addEventListener('click', function() {
+    window.location.href = '../maps/map.php';
+  });
+</script>
 
-                        <div class="form-group">
-                          <select id="doctors" name="doc" class="form-control" required="required">
-                            <option value="">------- Choose Doctor ------</option>
-                          </select>
-                        </div>
 
                         <div class="form-group">
                           <div class="row">

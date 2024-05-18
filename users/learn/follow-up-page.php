@@ -6,12 +6,12 @@ $email=$_GET['email'];
 $date = $_GET['date'];
 $recipient = $email;
 $sender = 'ms21jiya@gmail.com';
-// $api
+
 $followUpDate = date('Y-m-d', strtotime($date . ' + 10 days'));
 
 // Set email parameters for initial email
 $initialEmailParams = [
-    'from' => $sender,
+    'from' => $sender, 
     'to' => $recipient,
     'subject' => 'Follow-Up Appointment Reminder',
     'html' => "

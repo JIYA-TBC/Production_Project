@@ -14,6 +14,7 @@ $from = 'ms21jiya@gmail.com';
 $subject = 'Hello from Mailgun';
 $message = 'Your OTP is: ' . $otp;
 
+
 // Set API endpoint
 $url = 'https://api.mailgun.net/v3/' . $domain . '/messages';
 

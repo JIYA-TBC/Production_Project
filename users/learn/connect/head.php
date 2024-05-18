@@ -109,6 +109,13 @@
 </li>
 
 <li class="nav-item">
+    <a class="nav-link" href="chat_system/index.php">
+        <i class="fas fa-question"></i>
+        <span>Chat here</span>
+    </a>
+</li>
+
+<li class="nav-item">
     <a class="nav-link" href="bookapp.php">
         <i class="fas fa-fw fa-edit"></i>
         <span>Book Appointment</span>

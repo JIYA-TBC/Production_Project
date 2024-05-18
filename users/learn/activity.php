@@ -1,16 +1,18 @@
 <?php
+
+
 session_start();
 include "session_st.php";
 
-include"../../connect.php";
+include "../../connect.php";
 include "count.php";
 
-
-
-if (!isset($_SESSION['passi'])){
-  header("location:../../login.php");
+if (!isset($_SESSION['passi'])) {
+  header("location:../../login.php?error=login_first");
   exit();
-} 
+}
+
+
 
 ?>
 

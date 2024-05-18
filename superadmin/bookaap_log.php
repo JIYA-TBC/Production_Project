@@ -45,13 +45,19 @@ mysqli_close($con);
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php">Change Report</a>
+                    <a class="nav-link" href="dashboard.php">User's Report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Change Report</a>
+                    <a class="nav-link" href="#">Appointment Report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="mother_list.php">Mother's List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="immunization.php">Immunization Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -59,49 +65,52 @@ mysqli_close($con);
     <div class="container mt-5">
         <div class="row">
             <div class="col">
+                <a href="download_csv.php" class="btn btn-primary mb-3">Download Report as CSV</a>
+                <button class="btn btn-primary mb-3" onclick="printReport()">Print Report</button>
                 <?php if (isset($error)) : ?>
                     <div class="alert alert-danger" role="alert">
                         Error: <?php echo $error; ?>
                     </div>
                 <?php else : ?>
                     <?php if (!empty($changesData)) : ?>
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Table Name</th>
-                                    <th>Operation</th>
-                                    <th>Date/Time</th>
-                                    <th>Description</th>
-                                    <th>Appointment Date</th>
-                                    <th>Appointment Time</th>
-                                    <th>Doctor appointed</th>
-                                    <th>Phone</th>
-                                    <th>Mother's Name</th>
-                                    <th>Mother's Email</th>
-                                    <th>Status</th>
-                                    <!-- Add more columns if needed -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($changesData as $change) : ?>
+                        <div id="reportContent">
+                            <table class="table">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <td><?php echo $change['table_name']; ?></td>
-                                        <td><?php echo $change['operation']; ?></td>
-                                        <td><?php echo $change['change_time']; ?></td>
-                                        <td><?php echo $change['description']; ?></td>
-                                        <td><?php echo $change['appdate']; ?></td>
-                                        <td><?php echo $change['apptime']; ?></td>
-                                        <td><?php echo $change['docname']; ?></td>
-                                        <td><?php echo $change['phone']; ?></td>
-                                        <td><?php echo $change['name']; ?></td>
-                                        <td><?php echo $change['email']; ?></td>
-                                        <td><?php echo $change['status']; ?></td>
-
+                                        <th>Table Name</th>
+                                        <th>Operation</th>
+                                        <th>Date/Time</th>
+                                        <th>Description</th>
+                                        <th>Appointment Date</th>
+                                        <th>Appointment Time</th>
+                                        <th>Doctor appointed</th>
+                                        <th>Phone</th>
+                                        <th>Mother's Name</th>
+                                        <th>Mother's Email</th>
+                                        <th>Status</th>
                                         <!-- Add more columns if needed -->
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($changesData as $change) : ?>
+                                        <tr>
+                                            <td><?php echo $change['table_name']; ?></td>
+                                            <td><?php echo $change['operation']; ?></td>
+                                            <td><?php echo $change['change_time']; ?></td>
+                                            <td><?php echo $change['description']; ?></td>
+                                            <td><?php echo $change['appdate']; ?></td>
+                                            <td><?php echo $change['apptime']; ?></td>
+                                            <td><?php echo $change['docname']; ?></td>
+                                            <td><?php echo $change['phone']; ?></td>
+                                            <td><?php echo $change['name']; ?></td>
+                                            <td><?php echo $change['email']; ?></td>
+                                            <td><?php echo $change['status']; ?></td>
+                                            <!-- Add more columns if needed -->
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php else : ?>
                         <div class="alert alert-info" role="alert">
                             No changes data available.
@@ -116,5 +125,17 @@ mysqli_close($con);
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS for print functionality -->
+    <script>
+        function printReport() {
+            var reportContent = document.getElementById('reportContent').innerHTML;
+            var originalContent = document.body.innerHTML;
+
+            document.body.innerHTML = reportContent;
+            window.print();
+            document.body.innerHTML = originalContent;
+            location.reload(); // Reload the page to restore the original content
+        }
+    </script>
 </body>
 </html>

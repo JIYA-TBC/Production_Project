@@ -3,7 +3,7 @@
 include_once "connect.php";
 
 // Fetch data from the changes_report table
-$query = "SELECT * FROM changes_report";
+$query = "SELECT * FROM usr";
 $result = mysqli_query($con, $query);
 
 // Check if data was fetched successfully
@@ -44,8 +44,8 @@ mysqli_close($con);
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">User's Report</a>
+            <li class="nav-item">
+                    <a class="nav-link" href="dashboard.php">User's Report</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="bookaap_log.php">Apppointment Report</a>
@@ -76,26 +76,26 @@ mysqli_close($con);
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>Table Name</th>
-                                    <th>Operation</th>
-                                    <th>Rows Affected</th>
-                                    <th>Description</th>
-                                    <th>Date/Time</th>
-                                    <th>Email</th>
                                     <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Child's age</th>
+                                    
                                     <!-- Add more columns if needed -->
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($changesData as $change) : ?>
                                     <tr>
-                                        <td><?php echo $change['table_name']; ?></td>
-                                        <td><?php echo $change['operation']; ?></td>
-                                        <td><?php echo $change['rows_affected']; ?></td>
-                                        <td><?php echo $change['description']; ?></td>
-                                        <td><?php echo $change['change_time']; ?></td>
+                                        <td><?php echo $change['fname']; ?></td>
+                                        <td><?php echo $change['sname']; ?></td>
                                         <td><?php echo $change['email']; ?></td>
-                                        <td><?php echo $change['name']; ?></td>
+                                        <td><?php echo $change['phone']; ?></td>
+                                        <td><?php echo $change['addr']; ?></td>
+                                        <td><?php echo $change['vaccage']; ?></td>
+                                        
 
                                         <!-- Add more columns if needed -->
                                     </tr>
