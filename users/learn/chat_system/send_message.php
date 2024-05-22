@@ -5,7 +5,7 @@ include '../../../connect.php';
 if (isset($_POST['message']) && isset($_SESSION['username'])) {
     $message = $con->real_escape_string($_POST['message']);
     $user = 'Mom';
-    
+
     $query = "INSERT INTO messages (user, message) VALUES ('$user', '$message')";
     if ($con->query($query) === TRUE) {
         echo "Message sent";
@@ -17,4 +17,3 @@ if (isset($_POST['message']) && isset($_SESSION['username'])) {
 }
 
 $con->close();
-?>

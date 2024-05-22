@@ -4,7 +4,8 @@ include "session_st.php";
 include "../../connect.php";
 
 // Function to suggest improvements based on symptoms
-function suggestImprovementsForSymptoms($symptoms) {
+function suggestImprovementsForSymptoms($symptoms)
+{
     $suggestions = array();
 
     // Example suggestions based on symptoms

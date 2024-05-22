@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if entered OTP matches the stored OTP
     if ($user_otp == $_SESSION['otp']) {
         // OTP verification successful, redirect to reset password page
-       header("Location: reset_password.php?user_otp=" . urlencode($_SESSION['otp']));
-        exit(); 
+        header("Location: reset_password.php?user_otp=" . urlencode($_SESSION['otp']));
+        exit();
     } else {
         // OTP verification failed, display error message
         $error_message = "Invalid OTP. Please try again.";
@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,6 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Verify OTP</h2>
@@ -106,5 +108,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </body>
-</html>
 
+</html>

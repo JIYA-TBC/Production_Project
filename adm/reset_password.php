@@ -26,75 +26,78 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $token = $_GET['user_otp'];
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
 
-        form {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 400px;
-            width: 100%;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reset Password</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
+            form {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                max-width: 400px;
+                width: 100%;
+            }
 
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+            }
 
-        button[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px; 
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
+            input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+                font-size: 16px;
+            }
 
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-    <form action="reset_password.php" method="POST">
-        <input type="hidden" name="token" value="<?php echo ($token); ?>">
-        <h2>Reset Password</h2>
-        <input type="password" name="password" placeholder="Enter your new password" required>
-        <button type="submit">Reset Password</button>
-    </form>
-</body>
-</html>
+            button[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s;
+                width: 100%;
+            }
+
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form action="reset_password.php" method="POST">
+            <input type="hidden" name="token" value="<?php echo ($token); ?>">
+            <h2>Reset Password</h2>
+            <input type="password" name="password" placeholder="Enter your new password" required>
+            <button type="submit">Reset Password</button>
+        </form>
+    </body>
+
+    </html>
 
 <?php
 } else {

@@ -62,7 +62,8 @@ include "../connect.php";
       text-decoration: none;
     }
 
-    .fa-eye, .fa-eye-slash {
+    .fa-eye,
+    .fa-eye-slash {
       position: absolute;
       right: 20px;
       top: 50%;
@@ -76,13 +77,14 @@ include "../connect.php";
   <div class="container">
     <?php
     if (isset($_POST['adlog'])) {
-      function test_input($data) {
+      function test_input($data)
+      {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
       }
-      
+
       $user = test_input($_POST['mail']) or die('please enter a valid email');
       $password = test_input($_POST['pass']) or die('please enter a valid password');
       $query1 = "select * from ad_in where pas='" . mysqli_real_escape_string($con, $password) . "' AND use_r='" . mysqli_real_escape_string($con, $user) . "' ";

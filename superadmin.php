@@ -137,7 +137,7 @@ include "connect.php";
 			<div class="flex-w flex-tr">
 				<div class="col-md-3"></div>
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-				<form action="superadmin/checkuser.php" method="POST">
+					<form action="superadmin/checkuser.php" method="POST">
 
 						<div class="bor8 m-b-20 how-pos4-parent">
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" type="email" name="email" placeholder="Email" required>

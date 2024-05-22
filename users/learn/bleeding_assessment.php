@@ -4,7 +4,8 @@ include "session_st.php";
 include "../../connect.php";
 
 // Function to evaluate safety level based on bleeding data
-function evaluateSafetyLevelForBleeding($pad_count, $saturation_level, $large_clots) {
+function evaluateSafetyLevelForBleeding($pad_count, $saturation_level, $large_clots)
+{
     // Example logic to evaluate safety level based on bleeding data
     if ($pad_count >= 3 && $saturation_level === "Heavy") {
         return "Unsafe - Seek immediate medical attention!";
@@ -120,83 +121,84 @@ if (!isset($_SESSION['cur_user'])) {
                                     </div>
                                 </div>
                                 <!-- Card Body -->
-                                
+
                                 <div class="col-md-6">
-			<div class="w3-card">
-                    <div class="w3-container w3-blue text-center pt-3 pb-2" >
-                        <h6 style="font-weight: bold;">Answer the Questions</h6>
-                    </div>
-                    <div class="card-body">
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <div class="form-group">
-        <label for="pad_count">Number of Pads Used:</label>
-        <input type="number" id="pad_count" name="pad_count" required><br>
-        </div>
-        <div class="form-group">
+                                    <div class="w3-card">
+                                        <div class="w3-container w3-blue text-center pt-3 pb-2">
+                                            <h6 style="font-weight: bold;">Answer the Questions</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                                                <div class="form-group">
+                                                    <label for="pad_count">Number of Pads Used:</label>
+                                                    <input type="number" id="pad_count" name="pad_count" required><br>
+                                                </div>
+                                                <div class="form-group">
 
-        <label for="saturation_level">Pad Saturation Level:</label>
-        <select id="saturation_level" name="saturation_level" required>
-            <option value="Light">Light</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Heavy">Heavy</option>
-        </select><br>
-        </div>
-        <div class="form-group">
-        <label for="large_clots">Large Blood Clots Passed (if any):</label>
-        <input type="text" id="large_clots" name="large_clots"><br>
+                                                    <label for="saturation_level">Pad Saturation Level:</label>
+                                                    <select id="saturation_level" name="saturation_level" required>
+                                                        <option value="Light">Light</option>
+                                                        <option value="Moderate">Moderate</option>
+                                                        <option value="Heavy">Heavy</option>
+                                                    </select><br>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="large_clots">Large Blood Clots Passed (if any):</label>
+                                                    <input type="text" id="large_clots" name="large_clots"><br>
 
-        <input type="submit" value="Submit">
-        </div>
-        
-    </form>
-    <div class="alert alert-info mt-4">
-    <?php if (isset($_SESSION['bleeding_data'])): 
-            $bleeding_data = $_SESSION['bleeding_data'];
-            $safety_level = evaluateSafetyLevelForBleeding($bleeding_data['pad_count'], $bleeding_data['saturation_level'], $bleeding_data['large_clots']);
-    ?>
-    
-        <h2>Bleeding Confirmation</h2>
-        <p>Your bleeding assessment data has been successfully recorded:</p>
-        <ul>
-            <li>Number of Pads Used: <?php echo $bleeding_data["pad_count"]; ?></li>
-            <li>Pad Saturation Level: <?php echo $bleeding_data["saturation_level"]; ?></li>
-            <li>Large Blood Clots Passed (if any): <?php echo $bleeding_data["large_clots"]; ?></li>
-        </ul>
+                                                    <input type="submit" value="Submit">
+                                                </div>
 
-        <p>Safety Level: <?php echo $safety_level; ?></p>
-    <?php endif; ?>
+                                            </form>
+                                            <div class="alert alert-info mt-4">
+                                                <?php if (isset($_SESSION['bleeding_data'])) :
+                                                    $bleeding_data = $_SESSION['bleeding_data'];
+                                                    $safety_level = evaluateSafetyLevelForBleeding($bleeding_data['pad_count'], $bleeding_data['saturation_level'], $bleeding_data['large_clots']);
+                                                ?>
 
-    
-                                            
-    </div>
-    </div>
-                </div>
-      <br>
-      <?php //cert(); ?>
-			</div>
-          </div>
+                                                    <h2>Bleeding Confirmation</h2>
+                                                    <p>Your bleeding assessment data has been successfully recorded:</p>
+                                                    <ul>
+                                                        <li>Number of Pads Used: <?php echo $bleeding_data["pad_count"]; ?></li>
+                                                        <li>Pad Saturation Level: <?php echo $bleeding_data["saturation_level"]; ?></li>
+                                                        <li>Large Blood Clots Passed (if any): <?php echo $bleeding_data["large_clots"]; ?></li>
+                                                    </ul>
+
+                                                    <p>Safety Level: <?php echo $safety_level; ?></p>
+                                                <?php endif; ?>
+
+
+
+                                            </div>
+                                        </div>
                                     </div>
+                                    <br>
+                                    <?php //cert(); 
+                                    ?>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Content Row -->
-                        <div class="row">
-                        </div>
                     </div>
                 </div>
-                <!-- Footer -->
-                <?php include "connect/foot.php"; ?>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row">
             </div>
         </div>
+    </div>
+    <!-- Footer -->
+    <?php include "connect/foot.php"; ?>
+    </div>
+    </div>
 
-        <script src="../../adm/s/js/dataTables/jquery.dataTables.js"></script>
-        <script src="../../adm/s/js/dataTables/dataTables.bootstrap.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('#dataTables-example').dataTable();
-            });
-        </script>
+    <script src="../../adm/s/js/dataTables/jquery.dataTables.js"></script>
+    <script src="../../adm/s/js/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
 </body>
 
 </html>

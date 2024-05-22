@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include "../connect.php";
@@ -7,21 +7,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if email exists
     $result = mysqli_query($con, "SELECT * FROM usr WHERE email='$email'");
-    
+
     if (mysqli_num_rows($result) > 0) {
-        
+
         $otp = mt_rand(100000, 999999); // Generate random OTP
         $_SESSION['otp'] = $otp; // Store OTP in session
         $expTime = date("Y-m-d H:i:s", strtotime('+1 hour'));
         // Set your Mailgun API credentials
-      
+
         $recipient = $email;
         $from = 'ms21jiya@gmail.com';
         $subject = 'Password Reset OTP';
         $message = 'Your OTP is: ' . $otp;
+       
 
- // Insert the token into the database
- mysqli_query($con, "INSERT INTO password_resets (email, token, expTime) VALUES ('$email', '$otp', '$expTime')");
+        // Insert the token into the database
+        mysqli_query($con, "INSERT INTO password_resets (email, token, expTime) VALUES ('$email', '$otp', '$expTime')");
         // Set API endpoint
         $url = 'https://api.mailgun.net/v3/' . $domain . '/messages';
 
@@ -66,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,6 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+
 <body>
     <form action="forgot_password.php" method="POST">
         <h2 style="text-align: center; margin-bottom: 20px;">Forgot Password</h2>
@@ -125,5 +128,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Submit</button>
     </form>
 </body>
-</html>
 
+</html>
