@@ -363,7 +363,7 @@ if (!isset($_SESSION['cur_user'])) {
                                 }
                                 ?>
                               </td>
-                              <td><a onclick="return confirm('Are you sure you want to delete?')" href="deletepdf.php?id=<?php echo $row2->id; ?>"><span class="fa fa-trash"></span></a></td>
+                              <td><a onclick="return confirm('Are you sure you want to delete?')" href="deletebooking.php?id=<?php echo $row2->id; ?>"><span class="fa fa-trash"></span></a></td>
 
                             </tr>
                           <?php  } ?>

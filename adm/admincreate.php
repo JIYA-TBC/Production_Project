@@ -27,41 +27,40 @@ include "../connect.php";
 <script>
   function openn() {
     var x = document.getElementById("myInput");
-    if (x.type == "password") {
+    if (x.type === "password") {
       x.type = "text";
-      $("#show").show();
-      $("#shide").hide();
+      document.getElementById("show").style.display = "block";
+      document.getElementById("shide").style.display = "none";
     } else {
       x.type = "password";
-      $("#show").hide();
-      $("#shide").show();
+      document.getElementById("show").style.display = "none";
+      document.getElementById("shide").style.display = "block";
     }
   }
 </script>
 
 <style>
-  /*---------------------------------------------*/
+    /* Style for show/hide password icons */
+    #show {
+      position: absolute;
+      right: 20px;
+      top: 61%;
+      transform: translateY(-50%);
+      display: none;
+    }
 
-  #show {
-    position: absolute;
-    right: 70px;
-    top: 112px;
-    display: none;
-  }
-
-  #shide {
-    position: absolute;
-    right: 70px;
-    top: 112px;
-  }
-
-  /*---------------------------------------------*/
-</style>
+    #shide {
+      position: absolute;
+      right: 20px;
+      top: 61%;
+      transform: translateY(-50%);
+    }
+  </style>
 
 
-<body class="" style="background-image: url('../images/bg-02.jpg');">
+<body class="" style="background-image: url('../images/bg5.jpg');">
 
-  <div class="container">
+<div class="container mt-5">
     <!-- php code -->
 
     <?php
@@ -126,16 +125,15 @@ include "../connect.php";
     <!-- end php code -->
 
     <!-- Outer Row -->
-    <div class="row ">
-
-      <div class="col-xl-6 mt-4">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-10 col-md-12">
 
         <div class="card o-hidden shadow-lg my-5" style="border-radius:30px 0px 0px 30px;">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
 
-              <div class="col-lg-12">
+            <div class="col-lg-6 d-none d-lg-block "style="background-image: url('../images/bg-login.jpg');"></div>
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-3"><span class="fa fa-user-md"></span></h1>
@@ -156,23 +154,7 @@ include "../connect.php";
                       <input type="email" class="form-control" name="mail" placeholder="Enter Email Address..." required="">
                     </div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-xl-6 mt-4">
-
-        <div class="card o-hidden shadow-lg my-5" style="border-radius:0px 30px 30px 0px;">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-
-              <div class="col-lg-12">
-                <div class="p-5">
+                
 
                   <div class="form-group">
                     <select style="font-size:15px;" name="stage" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" required="required">
@@ -213,7 +195,7 @@ include "../connect.php";
 
     </div>
 
-  </div>
+  </>
 
   <!-- Bootstrap core JavaScript-->
   <script src="s/vendor/jquery/jquery.min.js"></script>

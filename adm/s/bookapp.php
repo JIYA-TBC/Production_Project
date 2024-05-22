@@ -89,9 +89,22 @@ if (!isset($_SESSION['passiw'])){
   <tbody>
   <!-- php here -->
   <?php
-      $mysqli1="select * from  book_app where dept='$stage' ";
-      $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
-      while($row2 = mysqli_fetch_object($myquery1)){
+  // echo $fname;
+  $stmt = $con->prepare("SELECT * FROM book_app WHERE dept = 'Post-Partum' AND docname = ?");
+  if (!$stmt) {
+    die('Prepare failed: ' . $con->error);
+}
+      // $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
+      // while($row2 = mysqli_fetch_object($myquery1)){
+
+        $stmt->bind_param('s', $fname);
+        $stmt->execute();
+
+// Get the result set
+$result = $stmt->get_result();
+
+// Fetch the results
+while ($row2 = $result->fetch_object()) {
 
   ?>
   <tr class="" style="color: #444;">    

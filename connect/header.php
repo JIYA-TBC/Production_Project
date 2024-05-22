@@ -42,7 +42,7 @@
 							<a href="contact.php" style="color: #000; font-size: 15px;"><span class="fa fa-phone"></span> Contact</a>
 						</li>
 						<li class="">
-							<a href="superadmin.php" style="color: #000; font-size: 15px;"><span class="fa fa-phone"></span> Manage Report</a>
+							<a href="superadmin.php" style="color: #000; font-size: 15px;"><span class="fa fa-cog"></span> Manage Report</a>
 						</li>
 
 						<li class="por" style="color: black; font-size: 15px;">
@@ -58,11 +58,9 @@
 
 				<!-- Icon header -->
 				<div class="wrap-icon-header flex-w flex-r-m">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search" style="color:#f63;">
-						<i class="zmdi zmdi-search"></i>
-					</div>
+					
 
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart" style="color:#f63;">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart" style="color:#F21155;">
 						<i class="fa fa-book"></i>
 					</div>
 
@@ -124,7 +122,7 @@
 				<a href="contact.php"><span class="fa fa-phone"></span> Contact</a>
 			</li>
 			<li>
-				<a href="superadmin.php"><span class="fa fa-sign-in"></span> Manage Report</a>
+				<a href="superadmin.php"><span class="fa fa-cog"></span> Manage Report</a>
 			</li>			
 
 			<li>
@@ -174,7 +172,7 @@
 		<div class="header-cart-content flex-w js-pscroll posthead">
 
 			<p>
-				Post-Partum Care (PNC) is the care given to the mother and her newborn baby immediately after the birth and for the first six weeks of life. This is an important process every pregnant woman is supposed to undergo in order to rule out any complication.
+				Post-Partum Care (PPC) is the care given to the mother and her newborn baby immediately after the birth and for the first six weeks of life. This is an important process every pregnant woman is supposed to undergo in order to rule out any complication.
 			</p>
 			<p>
 				During this period, the mother goes through many physical and emotional changes while learning to care for her newborn. This first 6 weeks is referred to as postpartum care which involves getting proper rest, nutrition, and vaginal care.

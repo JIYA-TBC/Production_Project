@@ -93,7 +93,7 @@ function openn(){
 
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-02.jpg');">
-		<h2 class="ltext-105 cl0 txt-center" style="color:#f63;">
+		<h2 class="ltext-105 cl0 txt-center" style="color:#F21155;">
 			Register Here
 		</h2>
 	</section>	
@@ -239,7 +239,7 @@ function openn(){
 							
 						</div>
 
-                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" name="submit" style="background:#f63;">
+                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" name="submit" style="background:#F21155;">
 							Submit
 						</button>
 					</form>

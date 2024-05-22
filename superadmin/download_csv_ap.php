@@ -15,10 +15,10 @@ if ($result) {
 
     // Create CSV file
     header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="changes_report.csv"');
+    header('Content-Disposition: attachment; filename="app_changes_report.csv"');
 
     $output = fopen('php://output', 'w');
-    fputcsv($output, array('Table Name', 'Operation', 'Date/Time', 'Description', 'Appointment Date', 'Appointment Time', 'Doctor appointed', 'Phone', 'Mother\'s Name', 'Mother\'s Email', 'Status'));
+    fputcsv($output, array('ID','Table Name', 'Operation', 'Date/Time', 'Description', 'Appointment Date', 'Appointment Time', 'Doctor appointed', 'Phone', 'Mother\'s Name', 'Mother\'s Email', 'Status'));
 
     foreach ($changesData as $change) {
         fputcsv($output, $change);

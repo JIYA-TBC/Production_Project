@@ -59,10 +59,7 @@ if (!isset($_SESSION['cur_user'])) {
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-
-
-                    <!-- Topbar Search -->
+                 
 
 
                     <!-- Topbar Navbar -->
@@ -76,7 +73,7 @@ if (!isset($_SESSION['cur_user'])) {
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Ask Question / Complain </h1>
+                        <h1 class="h3 mb-0 text-gray-800">Immunization</h1>
 
                     </div>
                     <div class="row">
@@ -85,7 +82,7 @@ if (!isset($_SESSION['cur_user'])) {
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Question / Complain</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Immunization</h6>
                                     <div class="dropdown no-arrow">
 
 
@@ -105,13 +102,16 @@ if (!isset($_SESSION['cur_user'])) {
                                 <tr>
                                 <th>Vaccine Name</th>
                                 <th>Vaccine Age in weeks</th>
-                                <th>Mark as Taken</th>
+                                <th>Doses</th>
+                                <th>Description</th>
+
+                                <!-- <th>Mark as Taken</th> -->
                                 </tr>
                                 </thead>
                             <tbody>
                         <!-- php here -->
                         <?php
-                            $mysqli1="select * from  imm_uze where stage ='Postnatal' ";
+                            $mysqli1="select * from  imm_uze where stage ='Postpartum' ";
                             $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
                             while($row2 = mysqli_fetch_object($myquery1)){
 
@@ -119,14 +119,16 @@ if (!isset($_SESSION['cur_user'])) {
                                 <tr class="">    
                                 <td><?php echo $row2->vaccname; ?></td>
                                 <td><?php echo $row2->vaccage; ?></td>
-                                <td><input type="checkbox" name="immunizations[]" value="<?php echo $row2->vaccname; ?>"></td>
+                                <td><?php echo $row2->dose; ?></td>
+                                <td><?php echo $row2->description; ?></td>
+                                <!-- <td><input type="checkbox" name="immunizations[]" value="<?php echo $row2->vaccname; ?>"></td> -->
                                
                                 </tr>
                         <?php  } ?>
 
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary">Mark as Taken</button>
+                        <!-- <button type="submit" class="btn btn-primary">Mark as Taken</button> -->
                     </div>
                 </div>
       <br>

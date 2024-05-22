@@ -54,7 +54,7 @@ include "connect.php";
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/.jpg');">
 		<h2 class="ltext-105 cl0 txt-center" style="color:#f50a0a;">
-			Login Here
+			Verify otp here
 		</h2>
 	</section>
 
@@ -80,7 +80,7 @@ include "connect.php";
 						<div class="bor8 m-b-20 how-pos4-parent">
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" type="text" name="otp" placeholder="Enter OTP" required>
 						</div>
-						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" type="submit" name="submit" style="background:#f63;">Verify OTP</button>
+						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" type="submit" name="submit" style="background:#F21155;">Verify OTP</button>
 					</form>
 				</div>
 			</div>

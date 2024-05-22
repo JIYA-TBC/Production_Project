@@ -91,11 +91,12 @@ if (!isset($_SESSION['passiw'])){
       <tbody>
       <!-- php here -->
       <?php
-          $mysqli1="select * from  que_st where stage='$stage' ";
+          $mysqli1="select * from  que_st where stage='Postpartum' ";
           $myquery1=mysqli_query($con,$mysqli1) or die(mysqli_error($con));
           while($row2 = mysqli_fetch_object($myquery1)){
-
+$qid = $row2->id
       ?>
+      
       <tr class="" style="color: #444;">    
         <td>
             <div class="row border-left-success" style="padding-left: 70px;">
@@ -113,9 +114,9 @@ if (!isset($_SESSION['passiw'])){
                 <i><b> 
                 <?php
                     if($row2->status == "Replied"){ 
-                    echo "<a href='questview.php?id=$row2->id' class='text-success'>Click here to view Reply</a>"; 
+                    echo "<a href='questview.php?qid=$row2->id' class='text-success'>Click here to view Reply</a>"; 
                     }else{ 
-                    echo "<a href='questview.php?id=$row2->id' class='text-danger'>Click here to Reply</a>"; 
+                    echo "<a href='questview.php?qid=$row2->id' class='text-danger'>Click here to Reply</a>"; 
                     }
                 ?>
                 </b></i>

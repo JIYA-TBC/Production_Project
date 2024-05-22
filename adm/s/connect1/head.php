@@ -1,4 +1,4 @@
-<ul class="navbar-nav sidebar sidebar-dark accordion text-xs font-weight-bold" style="background:#330099;" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion text-xs font-weight-bold" style="background:#116800;" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -70,7 +70,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
 
       <li class="nav-item">
-        <a class="nav-link" href="mothers.php">
+        <a class="nav-link" href="chat_system_dr/index.php">
           <i class="fas fa-fw fa-users"></i>
           <span>View / Send sms</span></a>
       </li>

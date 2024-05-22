@@ -1,13 +1,16 @@
 <?php
+session_start();
 include "connect.php";
-if(!empty($_POST["email"])) {
-  $result = mysqli_query($con,"SELECT count(*) FROM s_admin WHERE email='" . $_POST["email"] . "'");
-  $row = mysqli_fetch_row($result);
-  $user_count = $row[0];
-  if($user_count>0) {
-      echo "<span class='status-not-available' style='color:red;'><b>Email exist</b></span>";
-  }else{
-      echo "<span class='status-available' style='color:green;'><b>Valid!</b></span>";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $result = mysqli_query($con, "SELECT * FROM s_admin WHERE email='$email' AND password='$password'");
+  if (mysqli_num_rows($result) == 1) {
+      $_SESSION['super_admin'] = $email; 
+      header("Location: dashboard.php"); 
+  } else {
+      echo "<span class='status-not-available' style='color:red;'><b>Invalid email or password</b></span>";
   }
 }
 ?>

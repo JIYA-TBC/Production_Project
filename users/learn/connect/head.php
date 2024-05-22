@@ -110,8 +110,14 @@
 
 <li class="nav-item">
     <a class="nav-link" href="chat_system/index.php">
-        <i class="fas fa-question"></i>
-        <span>Chat here</span>
+        <i class="fa fa-comments"></i>
+        <span>Chat With Mothers</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="chat_system_dr/index.php">
+        <i class="fa fa-comments-o"></i>
+        <span>Chat With Doctors</span>
     </a>
 </li>
 

@@ -9,9 +9,9 @@ $_SESSION['otp'] = $otp;
 
 // Set your API credentials
 
-$recipient = 'jroy48695@gmail.com';
+$recipient = $_SESSION['mail'];
 $from = 'ms21jiya@gmail.com';
-$subject = 'Hello from Mailgun';
+$subject = 'Hello from Post-partum Pal';
 $message = 'Your OTP is: ' . $otp;
 
 

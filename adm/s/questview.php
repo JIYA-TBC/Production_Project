@@ -4,11 +4,14 @@ session_start();
 include "session_a.php";
 include "../../connect.php";
 
+// echo $id;
 
 if (!isset($_SESSION['passiw'])){
   header("location:../index.php");
   exit();
 } 
+
+// echo $_SESSION['passiw'];
 
 ?>
 
@@ -114,14 +117,19 @@ if (!isset($_SESSION['passiw'])){
 
             $get=test_input($_POST["getid"]);          
             $text=test_input($_POST["qus"]);
+           
+            
                         
             $senddata2 = mysqli_query($con,"UPDATE que_st SET ans='".mysqli_real_escape_string($con,$text)."',
-            status='Replied' WHERE id='".$get."' AND stage='".$stage."' ")or die(mysqli_error($con)); 
+            status='Replied' WHERE id='".$get."' AND stage='".'Postpartum'."' ")or die(mysqli_error($con)); 
             
 
-            if(@$senddata2){
-            echo"<script>alert('question has been Answered')</script>";	
-            }
+            if (@$senddata2) {
+              echo "<script>
+                      alert('question has been Answered');
+                      window.location.href = 'quest.php';
+                    </script>";
+          }
             else{
             echo"<script>alert('An error occured')</script>";
             }
@@ -131,7 +139,7 @@ if (!isset($_SESSION['passiw'])){
 				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="user">
                     
 					<div class="form-group" >
-                     <input type="hidden" value="<?php echo $_GET['id']; ?>" name="getid" />   
+                     <input type="hidden" value="<?php echo $_GET['qid']; ?>" name="getid" />     
                      <textarea style="resize:none;" class="form-control " name="qus" rows=4 placeholder="Reply here..."></textarea>
                     </div>
                     
@@ -163,12 +171,13 @@ if (!isset($_SESSION['passiw'])){
 <tbody>
 <!-- php here -->
 <?php
-    if(!isset($_GET['id'])){
+    if(!$_SESSION['id']){
 	echo "sorry";	
 	}
 	
 	else{
-    $geti=$_GET['id'];
+    $geti=$_GET['qid'];
+    // echo $geti;
     $queryo=mysqli_query($con,"select * from que_st where id = '".$geti."' ");
     while($row = mysqli_fetch_object($queryo)){    
     ?>

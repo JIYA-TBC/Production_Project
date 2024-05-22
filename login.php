@@ -180,7 +180,7 @@ include "connect.php";
 						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer text-white" name="log" style="background:#f01d1d;">
 							Login
 						</button><br>
-						<p><a class="fli" href="#">Forget Password?</a> </p>
+						<p><a class="fli" href="forgotpassword/forgot_password.php">Forget Password?</a> </p>
 						<p><a class="fli" href="adm/index.php">Are you a doctor?</a></p>
 
 					</form>

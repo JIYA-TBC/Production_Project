@@ -74,7 +74,7 @@ if (!isset($_SESSION['passiw'])){
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Uplaod Immunization Date </h1>
+            <h1 class="h3 mb-0 text-gray-800">Add Immunization</h1>
             
           </div>
 
@@ -112,6 +112,8 @@ function test_input($data) {
          
       $vacc=test_input($_POST["vacc"]);
      $vaccage=test_input($_POST["vacage"]);
+     $dose=test_input($_POST["dose"]);
+     $des=test_input($_POST["des"]);
 	   
 	   
 	  
@@ -124,9 +126,8 @@ if($row2 > 0 ){
          
     }
 	else{
-$senddata2 = mysqli_query($con,"insert into imm_uze (stage,vaccname,vaccage) values
-    ('".mysqli_real_escape_string($con,$stage)."','".mysqli_real_escape_string($con,$vacc)."','".mysqli_real_escape_string($con,$vaccage)."'
-)")or die(mysqli_error($con));	
+$senddata2 = mysqli_query($con,"insert into imm_uze (stage,vaccname,dose,description,vaccage) values
+    ('".mysqli_real_escape_string($con,$stage)."','".mysqli_real_escape_string($con,$vacc)."','".mysqli_real_escape_string($con,$dose)."','".mysqli_real_escape_string($con,$des)."','".mysqli_real_escape_string($con,$vaccage)."')")or die(mysqli_error($con));	
 	}
 	
 	if(@$senddata2){
@@ -148,6 +149,12 @@ $senddata2 = mysqli_query($con,"insert into imm_uze (stage,vaccname,vaccage) val
 
                     <div class="form-group">
                       <input type="text" class="form-control form-control" placeholder="Enter Vaccine age" name="vacage"  required="">
+                    </div>
+                    <div class="form-group">
+                      <textarea style="resize:none;" class="form-control " name="des" rows=4 placeholder="Describe..." required=""></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control" placeholder="Enter Vaccine dose" name="dose"  required="">
                     </div>
 					
                     <button class="btn btn-primary btn-user" name="immu"><b>

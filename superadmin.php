@@ -121,9 +121,9 @@ include "connect.php";
 
 
 
-		echo "<script> location.replace('superadmin/dashboard.php')</script>";
+		echo "<script> location.replace('superadmin/checkuser.php')</script>";
 	} else {
-		echo "<script>alert('Invalid email or Pin! ')</script>";
+		// echo "<script>alert('Invalid email or Pin! ')</script>";
 		echo "<p style='color:red; text-align:center;'>Are You Sure you have an account?!</p>";
 	}		 //form validation to avoid exploit
 
@@ -137,7 +137,7 @@ include "connect.php";
 			<div class="flex-w flex-tr">
 				<div class="col-md-3"></div>
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-					<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+				<form action="superadmin/checkuser.php" method="POST">
 
 						<div class="bor8 m-b-20 how-pos4-parent">
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" type="email" name="email" placeholder="Email" required>
@@ -147,7 +147,7 @@ include "connect.php";
 						<div class="bor8 m-b-20 how-pos4-parent">
 							<span class="fa fa-eye text-success" id="show" onclick="openn()"></span>
 							<span class="fa fa-eye-slash" id="shide" onclick="openn()"></span>
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" type="password" name="pass" placeholder="Password" id="myInput" required>
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" type="password" name="password" placeholder="Password" id="myInput" required>
 							<span class="fa fa-expeditedssl how-pos4 pointer-none"></span>
 						</div>
 

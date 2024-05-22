@@ -175,15 +175,17 @@ if (!isset($_SESSION['cur_user'])) {
                         <tbody>
                           <!-- php here -->
                           <?php
+                          echo $stage;
+                          echo $mail;
                           $mysqli1 = "select * from  que_st where stage='$stage' and email='$mail' ";
                           $myquery1 = mysqli_query($con, $mysqli1) or die(mysqli_error($con));
                           while ($row2 = mysqli_fetch_object($myquery1)) {
 
                           ?>
                             <tr class="" style="color: #444;">
-                              <td><?php echo $row2->fullname; ?></td>
-                              <td><?php echo $row2->title; ?></td>
-                              <td><?php echo $row2->question; ?></td>
+                              <td><?php echo $row2['fullname']; ?></td>
+                              <td><?php echo $row2['title']; ?></td>
+                              <td><?php echo $row2['question']; ?></td>
                               <td>
                                 <?php
                                 if ($row2->status == "Replied") {

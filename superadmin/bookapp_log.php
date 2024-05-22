@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['super_admin'])) {
+    echo "<script>alert('You are not authorized to access this page. Please log in as a super admin.'); window.location.href = '../superadmin.php';</script>";
+    exit();
+}
 // Include database connection file
 include_once "connect.php";
 
@@ -29,15 +34,45 @@ mysqli_close($con);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom CSS -->
     <style>
-        /* Add custom CSS styles here */
         body {
             padding-top: 60px; /* Adjust based on navbar height */
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #28a745; /* Green color */
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .table thead {
+            background-color: #28a745; /* Green color */
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        .alert-info {
+            background-color: #e2f0d9;
+            color: #155724;
         }
     </style>
 </head>
 <body>
     <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="#">Super Admin Dashboard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,7 +89,13 @@ mysqli_close($con);
                     <a class="nav-link" href="mother_list.php">Mother's List</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="doctors_list.php">Doctor's List</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="immunization.php">Immunization Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="question_reports.php">Queries Report</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
@@ -65,7 +106,7 @@ mysqli_close($con);
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <a href="download_csv.php" class="btn btn-primary mb-3">Download Report as CSV</a>
+                <a href="download_csv_ap.php" class="btn btn-primary mb-3">Download Report as CSV</a>
                 <button class="btn btn-primary mb-3" onclick="printReport()">Print Report</button>
                 <?php if (isset($error)) : ?>
                     <div class="alert alert-danger" role="alert">
@@ -73,9 +114,21 @@ mysqli_close($con);
                     </div>
                 <?php else : ?>
                     <?php if (!empty($changesData)) : ?>
+                        <?php if (isset($_GET['status'])) : ?>
+                            <?php if ($_GET['status'] == 'success') : ?>
+                                <script>
+                                    alert("Appointment deleted successfully.");
+                                </script>
+                            <?php elseif ($_GET['status'] == 'error') : ?>
+                                <script>
+                                    alert("Error deleting the report.");
+                                </script>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
                         <div id="reportContent">
-                            <table class="table">
-                                <thead class="thead-dark">
+                            <table class="table table-striped">
+                                <thead>
                                     <tr>
                                         <th>Table Name</th>
                                         <th>Operation</th>
@@ -88,7 +141,7 @@ mysqli_close($con);
                                         <th>Mother's Name</th>
                                         <th>Mother's Email</th>
                                         <th>Status</th>
-                                        <!-- Add more columns if needed -->
+                                        <th>Action</th> 
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,7 +158,12 @@ mysqli_close($con);
                                             <td><?php echo $change['name']; ?></td>
                                             <td><?php echo $change['email']; ?></td>
                                             <td><?php echo $change['status']; ?></td>
-                                            <!-- Add more columns if needed -->
+                                            <td>
+                                                <form method="post" action="delete_report.php">
+                                                    <input type="hidden" name="report_id" value="<?php echo $change['id']; ?>">
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
